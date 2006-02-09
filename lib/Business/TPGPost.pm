@@ -5,7 +5,7 @@ use Business::TPGPost::Data qw/:ALL/;
 use Carp;
 use List::Util qw/reduce/;
 
-our $VERSION     = '0.01';
+our $VERSION     = '0.02';
 our $ERROR       = undef;
 
 sub new {
@@ -17,6 +17,7 @@ sub new {
       $self->{_priority} = 0;
       $self->{_tracktrace} = 0;
       $self->{_register} = 0;
+      $self->{_receipt} = 0;
       $self->{_machine} = 0;
    return $self;
 }
@@ -66,6 +67,13 @@ sub register {
    return $self->{_register};
 }
 
+sub receipt {
+   my ($self, $receipt) = @_;
+
+   $self->{_receipt} = $receipt if($receipt);
+   return $self->{_receipt};
+}
+
 sub machine {
    my ($self, $machine) = @_;
 
@@ -82,6 +90,7 @@ sub calculate {
    $self->priority(1) if($opt{priority});
    $self->tracktrace(1) if($opt{tracktrace});
    $self->register(1) if($opt{register});
+   $self->receipt(1) if($opt{receipt});
    $self->machine(1) if($opt{machine});
    $self->{_cost} = undef;
 
@@ -105,14 +114,24 @@ sub calculate {
    foreach my $key (keys %{$table}) {
       my ($lo, $hi) = split ',', $key;
       $highest = $hi if($hi > $highest);
-      if($self->{_weight} > $lo && $self->{_weight} < $hi) {
+      if($self->{_weight} >= $lo && $self->{_weight} <= $hi) {
          $self->{_cost} = $table->{$key};
          last;
       }
    }
    $ERROR = $self->{_weight} - $highest. " grams too heavy (max: $highest gr.)"
       if($highest < $self->{_weight});
-   return $self->{_cost} or undef;
+
+   ### Receipt ("Bericht van ontvangst")
+   if($self->register && $self->receipt) {
+      if($self->_zone) {                # World
+         $self->{_cost} += 1.40;
+      } else {                          # Netherlands
+         $self->{_cost} += 1.00 unless($self->machine);
+      }
+   }
+
+   return ($self->{_cost}) ? sprintf("%0.2f", $self->{_cost}) : undef;
 }
 
 sub _zone {
@@ -186,6 +205,7 @@ Business::TPGPost - Calculate Dutch (TPG Post) shipping costs
      $tpg->priority(1);
      $tpg->tracktrace(1);
      $tpg->register(1);
+     $tpg->receipt(1);
 
   my $costs = $tpg->calculate or die $Business::TPGPost::ERROR;
   
@@ -200,7 +220,8 @@ or
                   weight     => 534, 
                   large      => 1, 
                   tracktrace => 1,
-                  register   => 1
+                  register   => 1,
+                  receipt    => 1
               ) or die $Business::TPGPost::ERROR;
 
 =head1 DESCRIPTION
@@ -256,6 +277,11 @@ optional anymore.
 
 Sets and/or returns the value of this options. Defaults to 0 (meaning:
 parcel is not registered (Dutch: aangetekend)).
+
+=head3 receipt
+
+Sets and/or returns the value of this options. Defaults to 0 (meaning:
+receipt not requested for registered parcels).
 
 =head3 machine
 

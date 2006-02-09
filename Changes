@@ -1,5 +1,8 @@
 Revision history for Perl module Business::TPGPost
 
+0.02 Feb 9 2006
+    - fixed terrible bug ('<=' instead of '<')
+    - added forgotten receipt option
 0.01 Feb 7 2006
     - original version; created by ExtUtils::ModuleMaker 0.44
 

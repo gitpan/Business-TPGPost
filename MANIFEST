@@ -7,4 +7,5 @@ lib/Business/TPGPost.pm
 lib/Business/TPGPost/Data.pm
 t/001_load.t
 t/002_some_values.t
+t/003_receipts.t
 META.yml                                 Module meta-data (added by MakeMaker)

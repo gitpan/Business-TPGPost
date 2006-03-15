@@ -1,5 +1,7 @@
 Revision history for Perl module Business::TPGPost
 
+0.03 March 15 2006
+    - fixed ISO3166 reference from UK to GB
 0.02 Feb 9 2006
     - fixed terrible bug ('<=' instead of '<')
     - added forgotten receipt option

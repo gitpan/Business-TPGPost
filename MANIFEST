@@ -8,4 +8,5 @@ lib/Business/TPGPost/Data.pm
 t/001_load.t
 t/002_some_values.t
 t/003_receipts.t
+t/004_united_britain_great_kingdom.t
 META.yml                                 Module meta-data (added by MakeMaker)

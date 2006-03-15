@@ -5,7 +5,7 @@ use Business::TPGPost::Data qw/:ALL/;
 use Carp;
 use List::Util qw/reduce/;
 
-our $VERSION     = '0.02';
+our $VERSION     = '0.03';
 our $ERROR       = undef;
 
 sub new {
@@ -406,6 +406,7 @@ LICENSE file included with this module.
 =head1 SEE ALSO
 
 L<http://www.tpgpost.nl/>, 
+L<http://www.iso.org/iso/en/prods-services/iso3166ma/index.html>
 
 =cut
 

@@ -6,7 +6,7 @@ use vars qw($VERSION @EXPORT @EXPORT_OK %EXPORT_TAGS);
 use Carp;
 use YAML;
 
-$VERSION   = 0.01;
+$VERSION   = 0.02;
 @EXPORT    = qw();
 @EXPORT_OK = qw(zones table);
 %EXPORT_TAGS = ("ALL" => [@EXPORT_OK]);
@@ -15,7 +15,7 @@ sub zones {
    my %zones = (
       0 => [ qw(NL) ],
       1 => [ qw(BE LU) ],
-      2 => [ qw(DK DE FR MC IT AT ES UK SE) ],
+      2 => [ qw(DK DE FR MC IT AT ES GB SE) ],
       3 => [ qw(EE FI HU IE LV LT PL PT SI SK CZ) ],
       4 => [ qw(AL AD BA BG CY FO GI GR GL IS HR LI MK MT MD NO UA RO SM CS 
                 TR VA RU CH) ],

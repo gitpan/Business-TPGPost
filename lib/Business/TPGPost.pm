@@ -5,7 +5,7 @@ use Business::TPGPost::Data qw/:ALL/;
 use Carp;
 use List::Util qw/reduce/;
 
-our $VERSION     = '0.03';
+our $VERSION     = '0.04';
 our $ERROR       = undef;
 
 sub new {
@@ -127,7 +127,7 @@ sub calculate {
       if($self->_zone) {                # World
          $self->{_cost} += 1.40;
       } else {                          # Netherlands
-         $self->{_cost} += 1.00 unless($self->machine);
+         $self->{_cost} += 1.15 unless($self->machine);
       }
    }
 
@@ -229,7 +229,7 @@ or
 This module calculates the shipping costs for the Dutch TPG Post,
 based on country, weight and priority shipping (or not), etc.
 
-The shipping cost information is based on 'Tarieven Januari 2006'.
+The shipping cost information is based on 'Tarieven juni 2006'.
 
 It returns the shipping costs in euro or undef (which usually means
 the parcel is heavier than the maximum allowed weight; check
@@ -337,7 +337,7 @@ Pagina 8, incl. toeslag handtekening retour
 
 =over 4
 
-=item Standaard Pakket
+=item Basis Pakket
 
 Pagina 10
 

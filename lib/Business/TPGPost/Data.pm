@@ -6,7 +6,7 @@ use vars qw($VERSION @EXPORT @EXPORT_OK %EXPORT_TAGS);
 use Carp;
 use YAML;
 
-$VERSION   = 0.02;
+$VERSION   = 0.04;
 @EXPORT    = qw();
 @EXPORT_OK = qw(zones table);
 %EXPORT_TAGS = ("ALL" => [@EXPORT_OK]);
@@ -54,19 +54,15 @@ netherlands:
   # Parcels (paketten)
   large:
     stamp: 
-      '0,4999': 7.25
-      '5000,9999': 9.50
-      '10000,19999': 11.50
-      '20000,30000': 13.60
+      '0,10000': 6.20
     machine:
-      '0,4999': 5.50
-      '5000,10000': 7.25
+      '0,10000': 6.20
   # Register (aangetekend)
   register:
-    stamp:
-      '0,1000': 5.75
+    stamp: 
+      '0,1000': 6.45
     machine:
-      '0,1000': 5.55
+      '0,1000': 6.25
 # Outside of the Netherlands
 world:
   basic:
@@ -171,15 +167,15 @@ world:
   # Register ("aangetekend")
   register:
     europe:
-      '0,99': 6.60
-      '100,249': 6.60
-      '250,499': 7.70
+      '0,99': 6.95
+      '100,249': 6.95
+      '250,499': 8.10
       '500,999': 11.00
       '1000,2000': 11.75
     world:
-      '0,99': 6.90
-      '100,249': 8.30
-      '250,499': 13.25
+      '0,99': 7.25
+      '100,249': 8.75
+      '250,499': 13.90
       '500,999': 22.05
       '1000,2000': 22.25
 ...

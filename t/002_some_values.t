@@ -20,7 +20,7 @@ $cost = $tpg->calculate(
                register=> 1,
                machine => 1 
            );
-is($cost, '5.55');
+is($cost, '6.25');
 
 $tpg  = Business::TPGPost->new ();
 $cost = $tpg->calculate(

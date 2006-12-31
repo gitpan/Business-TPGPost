@@ -1,5 +1,8 @@
 Revision history for Perl module Business::TPGPost
 
+0.05 January 31 2006
+   - Module moved to Business::TNTPost::NL.
+     Please update your scripts!
 0.04 June 13 2006
    - (FIX) updated costs according to the June 2006 booklet
 0.03 March 15 2006
@@ -9,8 +12,3 @@ Revision history for Perl module Business::TPGPost
     - (NEW) forgotten receipt option
 0.01 Feb 7 2006
     - original version; created by ExtUtils::ModuleMaker 0.44
-
-
-Revision history for Perl module Business::TPGPost::Data
-
-

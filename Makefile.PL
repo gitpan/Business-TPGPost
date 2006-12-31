@@ -5,9 +5,6 @@ WriteMakefile(
     AUTHOR       => 'M. Blom (blom@cpan.org)',
     ABSTRACT     => 'Calculate Dutch (TPG Post) shipping costs',
     PREREQ_PM    => {
-                     'Carp'         => 0,
-                     'List::Util'   => 0,
-                     'Test::Simple' => 0.44,
-                     'YAML'         => 0,
+                     Business::TNTPost::NL      => 0
                     },
 );
